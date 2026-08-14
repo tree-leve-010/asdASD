@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Knight Survival</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="hud">
+    <div id="topLeft" class="hud-block"></div>
+
+    <div id="topCenter">
+      <div id="levelBox">Lv.1</div>
+      <div id="starBox">
+        <img src="assets/star.png" alt="star" />
+        <span id="starCount">0</span>
+      </div>
+    </div>
+
+    <div id="topRight" class="hud-block"></div>
+  </div>
+
+  <div id="messageBox" class="show"></div>
+
+  <div id="hotbarArea">
+    <div id="menuButton" title="منو">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <div id="hotbar">
+      <div class="slot" data-index="0"></div>
+      <div class="slot" data-index="1"></div>
+      <div class="slot" data-index="2"></div>
+      <div class="slot" data-index="3"></div>
+    </div>
+  </div>
+
+  <div id="modal" class="hidden">
+    <div id="modalContent">
+      <div id="modalLeft"></div>
+      <div id="modalRight">
+        <button id="siteBtn" class="iconBtn"><img src="assets/menu_gathhub.png" alt=""></button>
+        <button id="tgBtn" class="iconBtn"><img src="assets/telegram.png" alt=""></button>
+        <button id="mailBtn" class="iconBtn"><img src="assets/gmail.png" alt=""></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="chestModal" class="hidden">
+    <div id="chestModalContent">
+      <h3>محتویات صندوقچه</h3>
+      <div id="chestItems"></div>
+      <button id="takeChestLoot">برداشتن همه</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

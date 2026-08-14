@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  image-rendering: pixelated;
+  font-family: Tahoma, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1c1c1c;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: #58a84f;
+}
+
+#hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-block {
+  position: absolute;
+  top: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+#topLeft {
+  left: 16px;
+}
+
+#topRight {
+  right: 16px;
+}
+
+.hud-icon {
+  width: 28px;
+  height: 28px;
+}
+
+#topCenter {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#levelBox {
+  background: rgba(40, 40, 40, 0.85);
+  color: white;
+  border: 2px solid #d2c26d;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#starBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.45);
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#starBox img {
+  width: 28px;
+  height: 28px;
+}
+
+#hotbarArea {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#menuButton {
+  width: 62px;
+  height: 62px;
+  background: rgba(50, 35, 20, 0.9);
+  border: 3px solid #e0c64a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#menuButton .line {
+  width: 28px;
+  height: 4px;
+  background: #f3dd67;
+  border-radius: 3px;
+}
+
+#hotbar {
+  display: flex;
+  gap: 8px;
+}
+
+.slot {
+  width: 62px;
+  height: 62px;
+  border: 3px solid #e0c64a;
+  background: rgba(30,30,30,0.85);
+  border-radius: 8px;
+  pointer-events: auto;
+  position: relative;
+}
+
+.slot.selected {
+  box-shadow: 0 0 0 3px #fff inset;
+}
+
+.slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.slot .count {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+
+#messageBox {
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%);
+  min-width: 420px;
+  max-width: 80vw;
+  background: rgba(25, 25, 25, 0.92);
+  color: white;
+  border: 2px solid #e0c64a;
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s;
+}
+
+#messageBox.show {
+  opacity: 1;
+}
+
+#modal,
+#chestModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#modalContent {
+  width: 700px;
+  min-height: 360px;
+  background: #7a522f;
+  border: 4px solid #d8b45a;
+  border-radius: 12px;
+  display: flex;
+  padding: 18px;
+  gap: 18px;
+}
+
+#modalLeft {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-content: start;
+}
+
+.inventoryItem {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: rgba(0,0,0,0.25);
+  border: 2px solid #e0c64a;
+  border-radius: 8px;
+  position: relative;
+}
+
+.inventoryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.inventoryItem span {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+#modalRight {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iconBtn {
+  width: 72px;
+  height: 72px;
+  background: #5a3b20;
+  border: 3px solid #e0c64a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.iconBtn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+#chestModalContent {
+  width: 500px;
+  min-height: 280px;
+  background: #7a522f;
+  color: white;
+  border: 4px solid #d8b45a;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+#chestModalContent h3 {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+#chestItems {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  min-height: 140px;
+  margin-bottom: 14px;
+}
+
+#takeChestLoot {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #d9b341;
+  color: #2b1a08;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
